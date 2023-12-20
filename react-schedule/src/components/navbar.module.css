@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #282c34;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.navbar .a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .a:hover {
+  text-decoration: underline;
+}
+
+/* הוספת מדיה קווארי להתאמה למכשירים עם מסך רחב של עד 768 פיקסלים */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar ץa {
+    margin: 10px 0;
+  }
+}
