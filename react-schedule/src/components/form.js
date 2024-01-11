@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import classes from './form.module.css'
 
 function Form(props) {
   const [data, setData] = useState({});
   const { inputs, texts, selects, onSubmit, error } = props;
+
+  useEffect(() => {
+    inputs.map(input => {
+      data[input.key] = ''
+    })
+    texts.map(input => {
+      data[input.key] = ''
+    })
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -4,17 +4,15 @@ const mongoose = require('mongoose');
 
 exports.getTimes = async (req, res, next) => {
   try {
-    req.body.forEach((value, key) => {
-      if (!value || !value.trim) {
-        res.status(422).json({ message: `${key} is empty!` });
-        return
-      }
-    })
     const times = await Time.find({ employee: new mongoose.Types.ObjectId(req.userId) });
     res.status(200).json({
       msg: 'Fetched successfully',
       times: times
     })
+    if (!times[0]) {
+      const error = new Error('Your reports is empty.');
+      throw error;
+    }
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
